@@ -1,0 +1,13 @@
+
+logLevel: INFO
+
+outputInfo: {
+    workspace: ./,
+    outputFile: sample-app-report.html
+}
+
+appInfo: {
+    version: v01,
+    description: sample app
+}
+

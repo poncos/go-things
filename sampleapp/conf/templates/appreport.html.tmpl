@@ -1,0 +1,62 @@
+ <html>
+  <head>
+    <style>
+      body {
+        font-family:sans-serif;
+      }
+
+      h1,h2,h3,h4,h5,h6 {margin: 0px;}
+
+      .warning {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+        }
+        table {
+          font-family: verdana,arial,sans-serif;
+          font-size:11px;
+          color:#333333;
+          border-width: 1px;
+          border-color: #999999;
+          border-collapse: collapse;
+        }
+        table th {
+          background-color:#c3dde0;
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #a9c6c9;
+        }
+        table tr {
+          background-color:#d4e3e5;
+        }
+        table td {
+          border-width: 1px;
+          padding: 8px;
+          border-style: solid;
+          border-color: #a9c6c9;
+        }
+      </style>
+    </head>
+<body>
+  <br/><br/>
+  <h2>Golang Sample App</h2><br/><br/>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>LastName</th>
+      <th>Gender</th>
+      <th>Age</th>
+    </tr>
+    {{range .}}
+      <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+        <td>{{.Name}}</td>
+        <td>{{.Surname}}</td>
+        <td>{{if eq .Gender 0 }}MALE{{else}}FEMALE{{end}}</td>
+        <td>{{calculateAge .Dob}}</td>
+      </tr>
+    {{end}}
+  </table>
+
+</body></html>
