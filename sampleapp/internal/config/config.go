@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/poncos/go-things/samplemodule/internal/utils"
+	"github.com/poncos/gothings/sampleapp/internal/utils"
 
 	"gopkg.in/yaml.v2"
 )
@@ -19,7 +19,7 @@ type SampleAppConfig struct {
 	LogLevel  string `yaml:"logLevel"`
 
 	OutputInfo struct {
-		Workspace string, `yaml:"version"`
+		Workspace string `yaml:"version"`
 		OutputFile string `yaml:"outputFile"`
 	} `yaml:"outputInfo"`
 
@@ -43,7 +43,7 @@ func LoadConfig() SampleAppConfig {
 	exPath := filepath.Dir(ex)
 
 	slashPath := fmt.Sprintf("%s/%s", exPath, configFile)
-	sampleAppConfig := LoadGlobalConfigFromDir(slashPath)
+	sampleAppConfig := LoadConfigFromFile(slashPath)
 
 	sampleAppConfig.ConfigDir = fmt.Sprintf("%s/%s", exPath, configFile)
 
@@ -67,4 +67,15 @@ func LoadConfigFromFile(configFile string) SampleAppConfig {
 	}
 
 	return unmarshallGlobalConfig(b)
+}
+
+func unmarshallGlobalConfig(data []byte) SampleAppConfig {
+	appConfig := SampleAppConfig{}
+
+	err := yaml.Unmarshal([]byte(data), &appConfig)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return appConfig
 }

@@ -1,10 +1,15 @@
-package templates
+package report
 
 import (
-	"github.com/poncos/go-things/sampleapp/internal/utils"
+	"os"
+	"text/template"
+	"time"
+
 	// internal dependencies
-	"github.com/poncos/go-things/samplemodule/internal/model"
-	"github.com/poncos/go-things/samplemodule/internal/config"
+	"github.com/poncos/gothings/sampleapp/internal/utils"
+	"github.com/poncos/gothings/sampleapp/internal/model"
+	"github.com/poncos/gothings/sampleapp/internal/config"
+	"github.com/poncos/gothings/sampleapp/internal/paths"
 )
 
 // RenderHTMLTemplate parses a template and saves result to file
@@ -16,13 +21,19 @@ func RenderHTMLTemplate(
 		"calculateAge": calculateAge,
 	}
 
-	templateName := "appreport.html.tmpl"
-	path := config.ConfigDir + "/templates/" + templateName
+	path := paths.TemplatePath(config)
+	outputPath := paths.OutputFilePath(config)
 
-	tmpl, err := template.New(templateName).Funcs(funcMap).ParseFiles(path)
+	tmpl, err := template.New("appreport.html.tmpl").Funcs(funcMap).ParseFiles(path)
 
 	if err != nil {
 		utils.Fatal("ERROR creating template: %v", err)
+	}
+
+	f, errCreateFile := os.Create(outputPath)
+
+	if errCreateFile != nil {
+		utils.Fatal("ERROR opening report file %s", err)
 	}
 
 	err = tmpl.Execute(f, people)
@@ -32,6 +43,6 @@ func RenderHTMLTemplate(
 	}
 }
 
-func calculateAge(dob Time) string {
+func calculateAge(dob time.Time) string {
 	return dob.Format("01-02-2006")
 }
