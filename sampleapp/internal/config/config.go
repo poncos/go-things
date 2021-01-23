@@ -19,7 +19,7 @@ type SampleAppConfig struct {
 	LogLevel  string `yaml:"logLevel"`
 
 	OutputInfo struct {
-		Workspace string `yaml:"version"`
+		Workspace string `yaml:"workspace"`
 		OutputFile string `yaml:"outputFile"`
 	} `yaml:"outputInfo"`
 
@@ -45,7 +45,7 @@ func LoadConfig() SampleAppConfig {
 	slashPath := fmt.Sprintf("%s/%s", exPath, configFile)
 	sampleAppConfig := LoadConfigFromFile(slashPath)
 
-	sampleAppConfig.ConfigDir = fmt.Sprintf("%s/%s", exPath, configFile)
+	sampleAppConfig.ConfigDir = fmt.Sprintf("%s/conf", exPath)
 
 	return sampleAppConfig
 }

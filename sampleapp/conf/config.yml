@@ -2,7 +2,7 @@
 logLevel: INFO
 
 outputInfo: {
-    workspace: ./,
+    workspace: .,
     outputFile: sample-app-report.html
 }
 

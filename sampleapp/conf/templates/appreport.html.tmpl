@@ -47,6 +47,7 @@
       <th>Name</th>
       <th>LastName</th>
       <th>Gender</th>
+      <th>Date Of Birth</th>
       <th>Age</th>
     </tr>
     {{range .}}
@@ -54,6 +55,7 @@
         <td>{{.Name}}</td>
         <td>{{.Surname}}</td>
         <td>{{if eq .Gender 0 }}MALE{{else}}FEMALE{{end}}</td>
+        <td>{{timeToStr .Dob}}</td>
         <td>{{calculateAge .Dob}}</td>
       </tr>
     {{end}}

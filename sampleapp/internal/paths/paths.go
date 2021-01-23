@@ -9,7 +9,7 @@ import (
 
 // OutputFilePath returns the path to the file where the output report is generated
 func OutputFilePath(appConfig config.SampleAppConfig) string {
-	var outputFilePath = fmt.Sprint("%s/%s",
+	var outputFilePath = fmt.Sprintf("%s/%s",
 		appConfig.OutputInfo.Workspace,
 		appConfig.OutputInfo.OutputFile)
 
@@ -20,7 +20,7 @@ func OutputFilePath(appConfig config.SampleAppConfig) string {
 func TemplatePath(appConfig config.SampleAppConfig) string {
 	templateName := "appreport.html.tmpl"
 
-	var templatePath = fmt.Sprint("%s/%s",
+	var templatePath = fmt.Sprintf("%s/templates/%s",
 		appConfig.ConfigDir, templateName)
 
 	return templatePath

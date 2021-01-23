@@ -19,6 +19,7 @@ func RenderHTMLTemplate(
 
 	funcMap := template.FuncMap{
 		"calculateAge": calculateAge,
+		"timeToStr": timeToStr,
 	}
 
 	path := paths.TemplatePath(config)
@@ -43,6 +44,22 @@ func RenderHTMLTemplate(
 	}
 }
 
-func calculateAge(dob time.Time) string {
+func timeToStr(dob time.Time) string {
 	return dob.Format("01-02-2006")
+}
+
+func calculateAge(dob time.Time) int {
+	now := time.Now()
+
+	years := now.Year() - dob.Year()
+
+	if now.Month() < dob.Month() {
+		return years-1
+	} else if now.Month() > dob.Month() {
+		return years
+	} else if now.Day() < dob.Day(){
+		return years - 1
+	} else {
+		return years
+	}
 }

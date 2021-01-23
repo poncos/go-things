@@ -14,7 +14,7 @@ func main() {
 	var appConfig = config.LoadConfig()
 
 	for index := range people {
-		location, err := time.LoadLocation("Spain/Madrid")
+		location, err := time.LoadLocation("Local")
 
 		if err != nil {
 			log.Fatal("Error creation location variable", err)
