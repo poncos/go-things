@@ -2,9 +2,8 @@ package cypher_test
 
 import (
 	"fmt"
+	"github.com/poncos/gothings/samplemodule/pkg/cypher"
 	"testing"
-
-	"com.github/go-things/samplemodule/pkg/cypher"
 )
 
 func TestCaesarCypher(t *testing.T) {
