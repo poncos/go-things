@@ -6,10 +6,10 @@ import (
 	"time"
 
 	// internal dependencies
-	"github.com/poncos/gothings/sampleapp/internal/utils"
-	"github.com/poncos/gothings/sampleapp/internal/model"
-	"github.com/poncos/gothings/sampleapp/internal/config"
-	"github.com/poncos/gothings/sampleapp/internal/paths"
+	"github.com/poncos/go-things/sampleapp/internal/utils"
+	"github.com/poncos/go-things/sampleapp/internal/model"
+	"github.com/poncos/go-things/sampleapp/internal/config"
+	"github.com/poncos/go-things/sampleapp/internal/paths"
 )
 
 // RenderHTMLTemplate parses a template and saves result to file

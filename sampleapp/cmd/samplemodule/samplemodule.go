@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/poncos/gothings/samplemodule/pkg/cypher"
+	"github.com/poncos/go-things/samplemodule/pkg/cypher"
 )
 
 func main() {

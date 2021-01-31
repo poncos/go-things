@@ -2,7 +2,7 @@ package cypher_test
 
 import (
 	"fmt"
-	"github.com/poncos/gothings/samplemodule/pkg/cypher"
+	"github.com/poncos/go-things/samplemodule/pkg/cypher"
 	"testing"
 )
 

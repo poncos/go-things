@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	// internal dependencies
-	"github.com/poncos/gothings/sampleapp/internal/config"
+	"/internal/config"
 )
 
 // OutputFilePath returns the path to the file where the output report is generated

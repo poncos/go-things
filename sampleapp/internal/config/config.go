@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/poncos/gothings/sampleapp/internal/utils"
+	"github.com/poncos/go-things/sampleapp/internal/utils"
 
 	"gopkg.in/yaml.v2"
 )

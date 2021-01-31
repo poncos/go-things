@@ -1,3 +1,3 @@
-module github.com/poncos/gothings/samplemodule
+module github.com/poncos/go-things/samplemodule/samplemodule
 
 go 1.13

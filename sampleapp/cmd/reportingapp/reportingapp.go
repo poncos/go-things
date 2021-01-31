@@ -4,9 +4,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/poncos/gothings/sampleapp/internal/config"
-	"github.com/poncos/gothings/sampleapp/internal/model"
-	"github.com/poncos/gothings/sampleapp/internal/report"
+	"github.com/poncos/go-things/sampleapp/internal/config"
+	"github.com/poncos/go-things/sampleapp/internal/model"
+	"github.com/poncos/go-things/sampleapp/internal/report"
 )
 
 func main() {
