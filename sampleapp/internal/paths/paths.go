@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	// internal dependencies
-	"/internal/config"
+	"github.com/poncos/go-things/sampleapp/internal/config"
 )
 
 // OutputFilePath returns the path to the file where the output report is generated
