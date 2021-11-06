@@ -53,3 +53,4 @@ _testmain.go
 .idea
 bin/*kafka-consumer
 kafka-producer
+kafka-consumer

@@ -2,7 +2,7 @@ package kafka
 
 import (
 	"fmt"
-	
+
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/poncos/go-things/kafka-samples/internal/avro"
 )
@@ -27,6 +27,10 @@ func (kc *kafkaClient) Close() {
 	if (kc.kafkaProducer != nil) {
 		kc.kafkaProducer.Close()
 	}
+
+	if (kc.kafkaConsumer != nil) {
+		kc.kafkaConsumer.Close()
+	}
 }
 
 func (kc *kafkaClient) Publish(msg map[string]interface{}) {
@@ -48,33 +52,22 @@ func  (kc *kafkaClient) Flush(timeoutMS int) {
 	}
 }
 
-func (kd *kafkaClient) consume(msg interface{}) {
-/*
-* c, err := kafka.NewConsumer(&kafka.ConfigMap{
-		"bootstrap.servers": "localhost:29092,localhost:39092,localhost:49092",
-		"group.id":          "myGroup",
-		"auto.offset.reset": "earliest",
-	})
+func (kc *kafkaClient) Consume() (interface{}, error) {
 
-	if err != nil {
-		panic(err)
+	if (kc.kafkaConsumer == nil) {
+		kc.createConsumer()
 	}
 
-	c.SubscribeTopics([]string{"myTopic.v2"}, nil)
-
-	for {
-		msg, err := c.ReadMessage(-1)
-		if err == nil {
-			fmt.Printf("Message on %s: %s\n", msg.TopicPartition, string(msg.Value))
-			avro_decode(msg.Value)
-		} else {
-			// The client will automatically try to recover from all errors.
-			fmt.Printf("Consumer error: %v (%v)\n", err, msg)
-		}
+	var err error
+	msg, err := kc.kafkaConsumer.ReadMessage(-1)
+	if err == nil {
+		fmt.Printf("Message on %s: %s\n", msg.TopicPartition, string(msg.Value))
+		return avro.DecodeBinary(msg.Value), nil
+	} else {
+		// The client will automatically try to recover from all errors.
+		fmt.Printf("Consumer error: %v (%v)\n", err, msg)
+		return nil, err
 	}
-
-	c.Close()
-*/
 }
 
 func (kc *kafkaClient) createProducer() {
@@ -98,4 +91,20 @@ func (kc *kafkaClient) createProducer() {
 			}
 		}
 	}()
+}
+
+func (kc *kafkaClient) createConsumer() {
+
+	var err error
+	kc.kafkaConsumer, err = kafka.NewConsumer(&kafka.ConfigMap{
+		"bootstrap.servers": kc.bootstrapServers,
+		"group.id":          "myGroup",
+		"auto.offset.reset": "earliest",
+	})
+
+	if err != nil {
+		panic(err)
+	}
+
+	kc.kafkaConsumer.SubscribeTopics([]string{kc.topicName}, nil)
 }
