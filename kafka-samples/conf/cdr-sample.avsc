@@ -1,0 +1,56 @@
+{
+  "type": "record",
+  "name": "CallDetailRecord",
+  "namespace": "com.ecollado.sample.avro",
+  "fields": [
+    {
+      "name": "originatingNumber",
+      "type": "string"
+    },
+    {
+      "name": "terminatingNumber",
+      "type": "string"
+    },
+    {
+      "name": "startingTime",
+      "type": "string"
+    },
+    {
+      "name": "duration",
+      "type": [
+        "null",
+        "int"
+      ],
+      "default": null
+    },
+    {
+      "name": "imsi",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "imei",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "callType",
+      "type": {
+        "type": "enum",
+        "name": "CallType",
+        "symbols": [
+          "Voice",
+          "Text",
+          "Data"
+        ]
+      },
+      "default": "Voice"
+    }
+  ]
+}
