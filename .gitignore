@@ -51,4 +51,5 @@ _testmain.go
 # For example, set up .git/info/exclude or use a global .gitignore.
 
 .idea
-bin/*
+bin/*kafka-consumer
+kafka-producer
